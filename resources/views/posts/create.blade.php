@@ -1,14 +1,20 @@
-<!-- resources/views/posts/create.blade.php -->
 @extends('layouts.app')
 
 @section('content')
-    <h1>Создать пост</h1>
-
+<div class="container">
+    <h1>Создание нового поста</h1>
     <form action="{{ route('posts.store') }}" method="POST">
         @csrf
-        <input type="text" name="title" placeholder="Заголовок" required>
-        <textarea name="content" placeholder="Контент" required></textarea>
-        <button type="submit">Создать</button>
+        <div class="mb-3">
+            <label for="title" class="form-label">Заголовок</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Контент</label>
+            <textarea id="content" name="content" class="form-control" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Создать пост</button>
     </form>
+</div>
 @endsection
 

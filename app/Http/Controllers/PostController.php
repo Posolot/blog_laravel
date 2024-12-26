@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -13,7 +13,8 @@ class PostController extends Controller
     }
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+       $comments = $post->comments()->where('is_approved', true)->get();
+       return view('posts.show', compact('post', 'comments'));
     }
 
     public function create()
@@ -45,9 +46,9 @@ class PostController extends Controller
     }
 
     public function publish(Post $post)
-    {   
+    {
         $post->update(['is_published' => true]);
-        event(new PostPublished($post));
+       //event(new PostPublished($post));
         return redirect()->route('posts.index');
     }
     public function unpublish(Post $post)
@@ -55,9 +56,9 @@ class PostController extends Controller
         $post->update(['is_published' => false]);
         return redirect()->route('posts.index');
     }
-    public function unpublished()
+    public function drafts()
     {
         $posts = Post::where('is_published', false)->get();
-        return view('posts.unpublished', compact('posts'));
+        return view('posts.drafts', compact('posts'));
     }
 }
