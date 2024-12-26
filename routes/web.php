@@ -24,3 +24,4 @@ Route::patch('comments/{comment}', [CommentController::class, 'update'])->name('
 Route::post('posts/{post}/publish', [PostController::class, 'publish'])->name('posts.publish');
 Route::post('posts/{post}/publish', [PostController::class, 'publish'])->name('posts.publish');
 Route::get('posts/unpublished', [PostController::class, 'unpublished'])->name('posts.unpublished');
+Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
