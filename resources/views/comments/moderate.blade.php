@@ -18,6 +18,11 @@
                         @method('PUT')
                         <button type="submit" class="btn btn-success">Одобрить</button>
                     </form>
+                    <form action="{{ route('comments.reject', $comment->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Не одобрить</button>
+                    </form>
                 </li>
             @endforeach
         </ul>

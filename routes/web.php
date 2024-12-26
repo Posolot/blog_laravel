@@ -31,6 +31,6 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.e
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::get('/comments/moderate', [CommentController::class, 'moderate'])->name('comments.moderate');
-Route::put('/comments/{comment}/approve', [CommentController::class, 'approve'])->name('comments.approve');
 
 Route::post('posts/{post}/publish', [PostController::class, 'publish'])->name('posts.publish');
+Route::put('/comments/{comment}/approve', [CommentController::class, 'approve'])->name('comments.approve');Route::put('/comments/{comment}/approve', [CommentController::class, 'approve'])->name('comments.approve');
